@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <style>
+      @font-face {
+        font-family: "Jost";
+        src: url("https://indestructibletype.com/Jost/Jost-VF.ttf")
+          format("truetype");
+      }
+      body {
+        font-family: "Jost", sans-serif;
+      }
+    </style>
+    <link rel="stylesheet" type="text/css" href="/static/styles/style.css" />
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    <div class="navbar" id="navbar">
+      <div class="navbar-left"><a href="/">Home</a></div>
+      <div class="navbar-left"><a href="/explore">Explore</a></div>
+      <div class="navbar-left"><a href="/about">About</a></div>
+      <div class="navbar-right">
+        <a class="discord-login" href="https://discord.gg/3cqm3kzuGQ">
+          <img
+            src="/static/resources/images/discord_white.png"
+            alt="Discord Login"
+          />
+          <span>Join our Discord!</span>
+        </a>
+      </div>
+    </div>
+    <div class="content" id="content">{% block content %}{% endblock %}</div>
+  </body>
+</html>

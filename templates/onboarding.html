@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <title>SneakySave</title>
+    <style>
+      @font-face {
+        font-family: "Jost";
+        src: url("https://indestructibletype.com/Jost/Jost-VF.ttf")
+          format("truetype");
+      }
+      body {
+        font-family: "Jost", sans-serif;
+      }
+    </style>
+    <link rel="stylesheet" type="text/css" href="/static/styles/style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/styles/onboarding.css"
+    />
+  </head>
+  <body>
+    <div class="coversheet-controls">
+      <a class="coversheet-button hidden" onclick="previousStep()">Previous</a>
+      <a class="coversheet-button" onclick="nextStep()">Next</a>
+    </div>
+    <div class="coversheet-holder">
+      <div class="coversheet cover-blue">
+        <h1 class="coversheet-title">Welcome to SneakySave!</h1>
+        <h2 class="coversheet-subtitle">Let's get you setup.</h2>
+        <div class="coversheet-content">
+          <p>
+            This tutorial will walk you through setting up your SneakySave
+            account. Click "Next" to get started.
+          </p>
+        </div>
+      </div>
+      <div class="coversheet cover-green">
+        <h1 class="coversheet-title">Save Upload</h1>
+        <h2 class="coversheet-subtitle">
+          First, lets get your save ready for uploading.
+        </h2>
+        <div class="coversheet-content">
+          <p>
+            Please follow the video instructions below to export your save from
+            Sneaky Sasquatch. Alternatively, click
+            <a href="/help/save-upload">here</a> for a text version of the
+            instructions. When you're done, click "Next".
+          </p>
+        </div>
+      </div>
+      <div class="coversheet cover-green">
+        <h1 class="coversheet-title">Save Upload</h1>
+        <h2 class="coversheet-subtitle">
+          First, lets get your save ready for uploading.
+        </h2>
+        <div class="coversheet-content">
+          <p>
+            Please follow the video instructions below to export your save from
+            Sneaky Sasquatch. Alternatively, click
+            <a href="/help/save-upload">here</a> for a text version of the
+            instructions. When you're done, click "Next".
+          </p>
+        </div>
+      </div>
+    </div>
+    <script src="/static/scripts/onboarding.js"></script>
+  </body>
+</html>

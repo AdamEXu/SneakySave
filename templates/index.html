@@ -1,0 +1,24 @@
+{% extends "template.html" %} {% block title %} SneakySave {% endblock %} {%
+block content %}
+<div class="homepage">
+  <img
+    src="/static/resources/images/sneaky-sasquatch-icons/firefighter.png"
+    alt="Sneaky Sasquatch Logo"
+    class="homepage-icon"
+  />
+  <h1 class="homepage-title">SneakySave</h1>
+  <h1 class="homepage-text">
+    The first Sneaky Sasquatch save
+    <span id="save-text-effect" class="save-text-effect"></span>
+    <span class="blink">|</span>
+  </h1>
+  <a
+    class="discord-login discord-login-title"
+    href="https://discord.gg/3cqm3kzuGQ"
+  >
+    <img src="/static/resources/images/discord_white.png" alt="Discord Login" />
+    <span>Join our Discord!</span>
+  </a>
+</div>
+<script src="/static/scripts/homepage.js"></script>
+{% endblock %}
