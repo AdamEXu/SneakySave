@@ -131,4 +131,4 @@ if __name__ == '__main__':
   if os.environ.get('DEBUG') == 'TRUE':
     app.run(host='0.0.0.0', port=8080, debug=True)
   else:
-    app.run(host='0.0.0.0', port=8080)
+    app.run(host='0.0.0.0', port=80)
