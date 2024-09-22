@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This Privacy Policy explains how SneakySave ("we," "us," or "our") collects, uses, and protects the personal information of users ("you" or "your") who access our website located at [sneakysave.com](http://sneakysave.com) and [ssave.in](http://ssave.in) (collectively, the "Site"). Please note that SneakySave is a **hobby project**, and any information uploaded is **not secure**. Use our services at your own risk.
+This Privacy Policy explains how SneakySave ("we," "us," or "our") collects, uses, and protects the personal information of users ("you" or "your") who access our website located at [sneakysave.com](http://sneakysave.com) and [ssave.co](http://ssave.co) (collectively, the "Site"). Please note that SneakySave is a **hobby project**, and any information uploaded is **not secure**. Use our services at your own risk.
 
 ## Information We Collect
 
