@@ -64,5 +64,11 @@ document.getElementById("save-file").addEventListener("change", function () {
 });
 
 function submitForm() {
-  alert("testing");
+  // 1. check one more time if the username is valid (if not, redirect to /help/username-error)
+  // 2. send post request to /api/onboard with the username and save file
+  // 3. change the loading text from "Let's let you onboarded..." to "Please wait while we analyze your save... (this may take a while)" and display the loading animation again
+  document.getElementById("load-text").innerText = "Please wait while we analyze your save... (this may take a while)";
+  document.getElementById("gobtn").style.display = "none";
+  show_loading();
+  // 4. once finished, check for success and redirect to /dashboard, if not, redirect to /help/onboarding-error
 }
