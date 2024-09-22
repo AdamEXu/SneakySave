@@ -1,0 +1,81 @@
+#content-div {
+  opacity: 0;
+}
+
+.loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #efefef;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.loading-text p {
+  font-size: 2.5rem;
+  color: #000;
+}
+
+@keyframes grow {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.loading-animation {
+  width: 250px;
+  height: 250px;
+  border: none;
+  border-radius: 50%;
+  background: rgb(255, 255, 255);
+  background: radial-gradient(
+    circle,
+    rgb(113, 177, 80) 0%,
+    rgba(255, 255, 255, 0) 50%
+  );
+  animation: grow 1.5s infinite;
+}
+
+@keyframes loading-out {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.25);
+  }
+}
+
+.loading-out {
+  animation: loading-out 0.5s forwards;
+  pointer-events: none;
+}
+
+@keyframes content-in {
+  0% {
+    opacity: 0;
+    transform: scale(1.25);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.content-in {
+  animation: content-in 0.5s forwards;
+}

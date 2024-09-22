@@ -1,4 +1,13 @@
-data.json
+# *.json
+saves/
+*.stuff
+test*
+output*
+*.yaml
+*.yml
+*.log
+users.json
+tokens.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

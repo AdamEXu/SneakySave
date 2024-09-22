@@ -1,0 +1,29 @@
+{
+  "essentials": {
+    "name": "Essentials",
+    "description": "Learn about how we handle your data.",
+    "items": [
+      {
+        "name": "Privacy Policy",
+        "description": "Learn about how we handle your data.",
+        "link": "/help/privacy"
+      },
+      {
+        "name": "Terms & Conditions",
+        "description": "Read our terms of service.",
+        "link": "/help/terms"
+      }
+    ]
+  },
+  "basics": {
+    "name": "The Basics",
+    "description": "Learn about how to use the basics of SneakySave.",
+    "items": [
+      {
+        "name": "How to Upload",
+        "description": "Learn how to upload your save.",
+        "link": "/help/upload"
+      }
+    ]
+  }
+}

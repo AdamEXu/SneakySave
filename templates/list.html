@@ -1,0 +1,27 @@
+{% extends "template.html" %}
+{% block title %}SneakySave - {{title}}{% endblock %}
+{% block content %}
+<div class="content-div">
+  <h1>{{title}}</h1>
+  {% set ns = namespace(last_category=None) %}
+  {% for item in items %}
+    {% if item.category != ns.last_category %}
+      {% if not loop.first %}
+        </table>
+      {% endif %}
+      <h2>{{ item.category }}</h2>
+      <p style="text-align: left;">{{ item.category_description }}</p>
+      <table class="content-list">
+      {% set ns.last_category = item.category %}
+    {% endif %}
+    <tr onclick="window.location='{{item.link}}';">
+      <td>
+        <b>{{item.name}}</b> - {{item.description}}
+      </td>
+    </tr>
+    {% if loop.last %}
+      </table>
+    {% endif %}
+  {% endfor %}
+</div>
+{% endblock %}

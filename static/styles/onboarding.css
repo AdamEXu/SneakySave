@@ -83,6 +83,9 @@
 .coversheet-content p {
   margin: 1rem;
   font-size: 1.5rem;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  width: calc(100% - 2rem);
 }
 
 .coversheet-content a {
@@ -96,4 +99,9 @@
 
 .coversheet-content a:active {
   color: #ffffff;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
 }

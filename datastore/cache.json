@@ -1,0 +1,10 @@
+{
+  "campground_cache_1": {
+    "id": "campground_cache_1",
+    "name": "Campground Cache 1",
+    "guide": "To find this cache, you need to go behind the bush at the lake.",
+    "difficulty": 1,
+    "image": "/static/resources/images/cache/campground_cache_1.png",
+    "map": "0a39a8addc8114fc2a33b37c28a9acf2"
+  }
+}

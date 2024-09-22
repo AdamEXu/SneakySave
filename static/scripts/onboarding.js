@@ -1,55 +1,68 @@
-var currentStep = 0;
-
 function nextStep() {
-  var coversheets = document.getElementsByClassName("coversheet");
-  var holder = document.querySelector(".coversheet-holder");
-  currentStep = Math.min(currentStep + 1, coversheets.length - 1); // Ensure we don't go beyond the last card
+  // use api to check if the username is valid
+  // /api/check_username?username=username (get request is fine)
+  var username = document.getElementById("username").value;
+  if (username.length < 3) {
+    document.getElementById("username-error").innerText = "Username must be at least 3 characters long";
+  }
+  document.getElementById("step-1").classList.add("completed");
 
-  var cardWidth = coversheets[currentStep].offsetWidth; // Get the width of each card
-  var holderWidth = holder.offsetWidth; // Get the width of the container
-
-  // Calculate the scroll position to center the current card
-  var scrollPosition =
-    coversheets[currentStep].offsetLeft - (holderWidth - cardWidth) / 2;
-
-  // Scroll the container smoothly to the new position
-  holder.scrollTo({
-    left: scrollPosition,
-    behavior: "smooth",
-  });
-
-  // Hide or show next/previous buttons based on the current position
-  document
-    .getElementById("next-button")
-    .classList.toggle("hidden", currentStep >= coversheets.length - 1);
-  document
-    .getElementById("prev-button")
-    .classList.toggle("hidden", currentStep <= 0);
+  var url = "/api/check_username?username=" + username;
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        document.getElementById("step-2").classList.remove("upcoming");
+        document.getElementById("done-text-username").classList.remove("hidden");
+        document.getElementById("username-submit-btn").style.opacity = "0";
+        setTimeout(function () {
+          document.getElementById("username-submit-btn").remove();
+        }, 200);
+      } else {
+        document.getElementById("username-error").innerText = data.error;
+        document.getElementById("step-1").classList.remove("completed");
+      }
+    });
 }
 
-function previousStep() {
-  var coversheets = document.getElementsByClassName("coversheet");
-  var holder = document.querySelector(".coversheet-holder");
-  currentStep = Math.max(currentStep - 1, 0); // Ensure we don't go before the first card
+document.getElementById("save-file").addEventListener("change", function () {
+  const file = this.files[0];
+  const fileError = document.getElementById("save-file-error");
+  
+  if (file && file.name.endsWith(".txt")) {
+    const reader = new FileReader();
+    
+    reader.onload = function(e) {
+      const file_content = e.target.result;
+      console.log("file is txt")
+      if (file_content.startsWith("**********CLOUDPROFILE0\n")) {
+        console.log("start is matching");
+        if (file_content.endsWith("--------default3/map/3f43248e5acd441dcb61e402a42e25e6.stuff 2b\n{}\n")) {
+          console.log("end is matching");
+          document.getElementById("save-file-name").innerText = file.name;
+          document.getElementById("step-2").classList.add("completed");
+          document.getElementById("step-3").classList.remove("upcoming");
+          document.getElementById("done-text-save").classList.remove("hidden");
+          document.getElementById("submit-btn").style.opacity = "1";
+          fileError.innerText = ""; // Clear any previous error
+        } else {
+          fileError.innerText = "Invalid save file";
+        }
+      } else {
+        fileError.innerText = "Invalid save file";
+      }
+    };
+    
+    reader.onerror = function() {
+      fileError.innerText = "Error reading file";
+    };
+    
+    reader.readAsText(file);
+  } else {
+    fileError.innerText = "Invalid file type";
+  }
+});
 
-  var cardWidth = coversheets[currentStep].offsetWidth; // Get the width of each card
-  var holderWidth = holder.offsetWidth; // Get the width of the container
-
-  // Calculate the scroll position to center the current card
-  var scrollPosition =
-    coversheets[currentStep].offsetLeft - (holderWidth - cardWidth) / 2;
-
-  // Scroll the container smoothly to the new position
-  holder.scrollTo({
-    left: scrollPosition,
-    behavior: "smooth",
-  });
-
-  // Hide or show next/previous buttons based on the current position
-  document
-    .getElementById("next-button")
-    .classList.toggle("hidden", currentStep >= coversheets.length - 1);
-  document
-    .getElementById("prev-button")
-    .classList.toggle("hidden", currentStep <= 0);
+function submitForm() {
+  alert("testing");
 }

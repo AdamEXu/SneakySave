@@ -11,23 +11,100 @@
       }
     </style>
     <link rel="stylesheet" type="text/css" href="/static/styles/style.css" />
+    <link rel="stylesheet" type="text/css" href="/static/styles/dropdown.css" />
     <title>{% block title %}{% endblock %}</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/static/resources/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/static/resources/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/static/resources/favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/static/resources/favicons/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="/static/resources/favicons/safari-pinned-tab.svg"
+      color="#71b150"
+    />
+    <link rel="shortcut icon" href="/static/resources/favicons/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#00a300" />
+    <meta
+      name="msapplication-config"
+      content="/static/resources/favicons/browserconfig.xml"
+    />
+    <meta name="theme-color" content="#ffffff" />
   </head>
   <body>
+    <script src="/static/scripts/utils.js"></script>
     <div class="navbar" id="navbar">
-      <div class="navbar-left"><a href="/">Home</a></div>
+      <div class="navbar-left">
+        <a href="/">
+          <img
+            src="/static/resources/favicons/ssave.png"
+            alt="Sneaky Sasquatch Logo"
+            class="navbar-logo"
+          />
+        </a>
+      </div>
       <div class="navbar-left"><a href="/explore">Explore</a></div>
       <div class="navbar-left"><a href="/about">About</a></div>
       <div class="navbar-right">
-        <a class="discord-login" href="https://discord.gg/3cqm3kzuGQ">
+        <a class="discord-login" href="/discord" id="login-slot">
           <img
             src="/static/resources/images/discord_white.png"
             alt="Discord Login"
           />
           <span>Join our Discord!</span>
         </a>
+        <a
+          class="user-profile-corner"
+          id="user_profile"
+          onclick="toggleProfileMenu()"
+        >
+          <img src="{{user_info.avatar}}" alt="Profile" />
+          <span id="user_profile_text">{{user_info.username}}</span>
+        </a>
+      </div>
+      <div class="profile-menu hidden" id="profile-menu">
+        <a href="/profile">Profile</a>
+        <a href="/logout">Logout</a>
+      </div>
+      <script>
+        var token = getCookie("token");
+        if (token != "not_found") {
+          document.getElementById("login-slot").style.display = "none";
+        } else {
+          document.getElementById("user_profile").style.display = "none";
+        }
+      </script>
+    </div>
+    <div class="content fade-in" id="content">
+      {% block content %}{% endblock %}
+    </div>
+    <div class="footer">
+      <div class="footer-left">
+        <a href="/help/privacy">Privacy Policy</a>
+        <a href="/help/terms">Terms & Conditions</a>
+      </div>
+      <div class="footer-center">
+        <span class="footer-center-text"
+          >© 2024 SneakySave. All rights reserved.</span
+        >
+      </div>
+      <div class="footer-right">
+        <a href="https://discord.gg/3cqm3kzuGQ">Join our Discord!</a>
       </div>
     </div>
-    <div class="content" id="content">{% block content %}{% endblock %}</div>
+    <script src="/static/scripts/index.js"></script>
   </body>
 </html>

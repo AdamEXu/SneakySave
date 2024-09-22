@@ -8,6 +8,7 @@ REDIRECT_URI = os.getenv('DISCORD_REDIRECT_URI')
 API_BASE_URL = "https://discord.com/api"
 AUTHORIZATION_BASE_URL = API_BASE_URL + "/oauth2/authorize"
 USER_URL = API_BASE_URL + "/users/@me"
+TOKEN_URL = API_BASE_URL + "/oauth2/token"
 
 def get_discord_login_url():
     return f"{AUTHORIZATION_BASE_URL}?response_type=code&client_id={CLIENT_ID}&scope=identify&redirect_uri={REDIRECT_URI}&prompt=consent"
