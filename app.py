@@ -277,20 +277,35 @@ def check_username():
       return {'success': False, 'error': 'Username already taken'}
   return {'success': True}
 
-@app.route('/api/alias')
-def alias():
-  url = request.args.get('url')
-  # find username matching the url
+# @app.route('/api/alias')
+# def alias():
+#   url = request.args.get('url')
+#   # find username matching the url
+#   with open('users.json', 'r') as f:
+#     users = json.load(f)
+#     for user_id in users:
+#       if users[user_id]['username'] == url:
+#         result = {
+#           "success": True,
+#           "url": f"save/{user_id}"
+#         }
+#         return result
+#   return {"success": False}
+
+@app.route('/redirect/<string:url>')
+def alias(url):
   with open('users.json', 'r') as f:
     users = json.load(f)
     for user_id in users:
       if users[user_id]['username'] == url:
-        result = {
-          "success": True,
-          "url": f"save/{user_id}"
-        }
-        return result
-  return {"success": False}
+        return redirect(f'/save/{user_id}')
+  for file in os.listdir('help-guides'):
+    if file.split('.')[0] == url:
+      return redirect(f'/help/{url}')
+  for file in os.listdir('blogs'):
+    if file.split('.')[0] == url:
+      return redirect(f'/blog/{url}')
+  return redirect(f'/{url}')
 
 @app.errorhandler(404)
 def page_not_found(e):
