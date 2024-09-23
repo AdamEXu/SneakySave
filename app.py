@@ -4,6 +4,7 @@ import json
 import markdown
 from discord_utils import get_discord_login_url, get_token, get_user_info
 import requests
+from save_utils import create_save_index, get_save_data, update_save_index
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
@@ -275,6 +276,34 @@ def check_username():
   for user_id in users:
     if users[user_id]['username'] == username and users[user_id]['onboarded']:
       return {'success': False, 'error': 'Username already taken'}
+  return {'success': True}
+
+@app.route('/api/onboard', methods=['POST'])
+def onboard():
+  token = request.json.get('token')
+  user_id = get_userid_from_token(token)
+  if user_id is None:
+    return {'error': 'Invalid token'}, 401
+  username = request.json.get('username')
+  save_file = request.files.get('save-file')
+  if username is None or save_file is None:
+    return {'error': 'Missing username or save file'}, 400
+  with open('users.json', 'r') as f:
+    users = json.load(f)
+    users[user_id]['username'] = username
+    users[user_id]['onboarded'] = True
+    with open('users.json', 'w') as f:
+      json.dump(users, f, indent=2)
+  # now we need to save the save file
+  # parse text from save file and save as variable
+  save = save_file.read().decode('utf-8')
+  try:
+    update_save_index(user_id, save)
+    print(f'Save file for user {username} ({user_id}) saved.')
+  except:
+    print(f'Error saving save file for user {username} ({user_id})')
+    return {'error': 'Invalid save file'}, 500
+  print(f'User {username} ({user_id}) onboarded.')
   return {'success': True}
 
 # @app.route('/api/alias')
