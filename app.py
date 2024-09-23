@@ -311,6 +311,17 @@ def onboard():
   print(f'User {username} ({user_id}) onboarded.')
   return jsonify({'success': True})
 
+@app.route('/api/get_username', methods=['POST'])
+def get_username():
+  token = request.json.get('token')
+  user_id = get_userid_from_token(token)
+  if user_id is None:
+    return {'error': 'Invalid token'}, 401
+  with open('users.json', 'r') as f:
+    users = json.load(f)
+    return {'success': True, 'username': users[user_id]['username']}
+  return {'error': 'Invalid API endpoint'}, 404
+
 # @app.route('/api/alias')
 # def alias():
 #   url = request.args.get('url')

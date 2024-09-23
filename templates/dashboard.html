@@ -1,6 +1,10 @@
 {% extends "template.html" %} {% block title %} SneakySave - About {% endblock
 %} {% block content %}
-<a href="/update" class="link">Update your save</a>
-<a href="/share" class="link">Share your save</a>
-<a href="/help" class="link">Help Center</a>
+<div class="content-div">
+  <a href="#" class="button disabled" disabled>Update your save (Coming Soon)</a
+  ><br /><br />
+  <!-- <a href="/share" class="link">Share your save</a> -->
+  <a onclick="toggleShareMenu()" class="button">Share your save</a><br /><br />
+  <a href="/help" class="button">Help Center</a>
+</div>
 {% endblock %}
