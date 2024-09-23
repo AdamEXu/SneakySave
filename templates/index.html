@@ -1,15 +1,24 @@
-{% extends "template.html" %} {% block title %} SneakySave {% endblock %}
-{% block card %}
+{% extends "template.html" %} {% block title %} SneakySave {% endblock %} {%
+block card %}
 <!-- meta tags -->
 <meta name="title" content="SneakySave" />
-<meta name="description" content="SneakySave is the first Sneaky Sasquatch save explorer. Explore, analyze, and share your save files easily." />
+<meta
+  name="description"
+  content="SneakySave is the first Sneaky Sasquatch save explorer. Explore, analyze, and share your save files easily."
+/>
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://sneakysave.com" />
 <meta property="og:title" content="SneakySave" />
-<meta property="og:description" content="SneakySave is the first Sneaky Sasquatch save explorer. Explore, analyze, and share your save files easily." />
-<meta property="og:image" content="https://sneakysave.com/static/resources/favicons/ssave_center.png" />
-{% endblock %}
-{% block content %}
+<meta
+  property="og:description"
+  content="SneakySave is the first Sneaky Sasquatch save explorer. Explore, analyze, and share your save files easily."
+/>
+<meta
+  property="og:image"
+  content="https://sneakysave.com/static/resources/meta/index.png"
+/>
+<meta property="twitter:card" content="summary" />
+{% endblock %} {% block content %}
 <div class="homepage">
   <img
     src="/static/resources/images/sneaky-sasquatch-icons/firefighter.png"
@@ -29,10 +38,7 @@
   <h2>More information coming soon!</h2>
   <!-- <p>Join our Discord server for the latest updates!</p> -->
   <a href="/discord" class="discord-login">
-    <img
-      src="/static/resources/images/discord_white.png"
-      alt="Discord Login"
-    />
+    <img src="/static/resources/images/discord_white.png" alt="Discord Login" />
     <span>Join our Discord!</span>
   </a>
 </div>
