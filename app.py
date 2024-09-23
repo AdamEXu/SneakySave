@@ -205,7 +205,7 @@ def help_page(page):
   # convert markdown to html
   html_content = markdown.markdown(content)
   # custom markdown tag: [video:https://youtube.com/embed/etc] -> <iframe src="https://youtube.com/embed/etc"></iframe>
-  html_content = html_content.replace('<--video:', '<iframe src="').replace('-->', '"></iframe>')
+  html_content = html_content.replace('<video>', '<iframe src="').replace('</video>', '"></iframe>')
   token = request.cookies.get('token')
   user_id = get_userid_from_token(token)
   if user_id is None:
