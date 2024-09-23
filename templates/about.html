@@ -1,6 +1,39 @@
 {% extends "template.html" %} {% block title %} SneakySave - About {% endblock
-%} {% block content %}
+%} {% block card %}
+<!-- meta tags -->
+<meta name="title" content="SneakySave - About" />
+<meta
+  name="description"
+  content="SneakySave is the first Sneaky Sasquatch save explorer. Explore, analyze, and share your save files easily."
+/>
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://sneakysave.com/about" />
+<meta property="og:title" content="SneakySave - About" />
+<meta
+  property="og:description"
+  content="SneakySave is the first Sneaky Sasquatch save explorer. Explore, analyze, and share your save files easily."
+/>
+<meta
+  property="og:image"
+  content="https://sneakysave.com/static/resources/favicons/ssave_center.png"
+/>
+{% endblock %} {% block content %}
 <div class="content-div">
   <h1>About SneakySave</h1>
+  <img
+    src="/static/resources/favicons/ssave_center.png"
+    alt="SneakySave Logo"
+    class="about-icon"
+  />
+  <p>
+    SneakySave is a hobby project that allows users to upload Sneaky Sasquatch
+    save files.
+  </p>
+  <p>You can then share your stats with others, or explore your own save.</p>
+  <p>Join our Discord server for the latest updates!</p>
+  <a class="discord-login" href="/discord">
+    <img src="/static/resources/images/discord_white.png" alt="Discord Login" />
+    <span>Join our Discord!</span>
+  </a>
 </div>
 {% endblock %}

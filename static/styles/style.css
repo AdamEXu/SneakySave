@@ -142,6 +142,7 @@ a.link:active {
   text-decoration: none;
   font-weight: 500;
   transition: transform 0.2s;
+  display: inline-block;
 }
 
 .discord-login:hover {
@@ -434,7 +435,8 @@ iframe {
   margin-bottom: 1rem;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
   height: auto;
-  transition: height 0.2s, padding 0.2s, overflow 0.2s, background-color 0.2s, color 0.2s, opacity 0.2s;
+  transition: height 0.2s, padding 0.2s, overflow 0.2s, background-color 0.2s,
+    color 0.2s, opacity 0.2s;
 }
 
 .upcoming {
@@ -457,8 +459,8 @@ iframe {
 
 .save-upload {
   opacity: 0;
-   position: absolute;
-   z-index: -1;
+  position: absolute;
+  z-index: -1;
 }
 
 .error-message {

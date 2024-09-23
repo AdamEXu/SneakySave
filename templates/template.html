@@ -42,7 +42,8 @@
       name="msapplication-config"
       content="/static/resources/favicons/browserconfig.xml"
     />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#71b150" />
+    {% block card %}{% endblock %}
   </head>
   <body>
     <script src="/static/scripts/utils.js"></script>
@@ -95,6 +96,7 @@
       <div class="footer-left">
         <a href="/help/privacy">Privacy Policy</a>
         <a href="/help/terms">Terms & Conditions</a>
+        <a href="/help">Help Center</a>
       </div>
       <div class="footer-center">
         <span class="footer-center-text"

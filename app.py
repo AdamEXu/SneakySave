@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, make_response
+from flask import Flask, render_template, request, redirect, url_for, session, make_response, jsonify
 import os
 import json
 import markdown
@@ -280,31 +280,36 @@ def check_username():
 
 @app.route('/api/onboard', methods=['POST'])
 def onboard():
-  token = request.json.get('token')
+  token = request.form.get('token')
+  username = request.form.get('username')
+  save_file = request.files.get('save-file')
+
   user_id = get_userid_from_token(token)
   if user_id is None:
-    return {'error': 'Invalid token'}, 401
-  username = request.json.get('username')
-  save_file = request.files.get('save-file')
-  if username is None or save_file is None:
-    return {'error': 'Missing username or save file'}, 400
+    return jsonify({'error': 'Invalid token'}), 401
+  
+  if username is None:
+    return jsonify({'error': 'Missing username'}), 400
+
   with open('users.json', 'r') as f:
     users = json.load(f)
     users[user_id]['username'] = username
     users[user_id]['onboarded'] = True
-    with open('users.json', 'w') as f:
-      json.dump(users, f, indent=2)
-  # now we need to save the save file
-  # parse text from save file and save as variable
-  save = save_file.read().decode('utf-8')
-  try:
-    update_save_index(user_id, save)
-    print(f'Save file for user {username} ({user_id}) saved.')
-  except:
-    print(f'Error saving save file for user {username} ({user_id})')
-    return {'error': 'Invalid save file'}, 500
+  
+  with open('users.json', 'w') as f:
+    json.dump(users, f, indent=2)
+
+  if save_file:
+    save = save_file.read().decode('utf-8')
+    try:
+      update_save_index(user_id, save)
+      print(f'Save file for user {username} ({user_id}) saved.')
+    except:
+      print(f'Error saving save file for user {username} ({user_id})')
+      return jsonify({'error': 'Invalid save file'}), 500
+
   print(f'User {username} ({user_id}) onboarded.')
-  return {'success': True}
+  return jsonify({'success': True})
 
 # @app.route('/api/alias')
 # def alias():

@@ -1,5 +1,15 @@
-{% extends "template.html" %} {% block title %} SneakySave {% endblock %} {%
-block content %}
+{% extends "template.html" %} {% block title %} SneakySave {% endblock %}
+{% block card %}
+<!-- meta tags -->
+<meta name="title" content="SneakySave" />
+<meta name="description" content="SneakySave is the first Sneaky Sasquatch save explorer. Explore, analyze, and share your save files easily." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://sneakysave.com" />
+<meta property="og:title" content="SneakySave" />
+<meta property="og:description" content="SneakySave is the first Sneaky Sasquatch save explorer. Explore, analyze, and share your save files easily." />
+<meta property="og:image" content="https://sneakysave.com/static/resources/favicons/ssave_center.png" />
+{% endblock %}
+{% block content %}
 <div class="homepage">
   <img
     src="/static/resources/images/sneaky-sasquatch-icons/firefighter.png"

@@ -102,6 +102,7 @@ function submitForm() {
   var formData = new FormData();
   formData.append("username", username);
   formData.append("save-file", document.getElementById("save-file").files[0]);
+  formData.append("token", getCookie("token"));
   fetch(url, {
     method: "POST",
     body: formData
