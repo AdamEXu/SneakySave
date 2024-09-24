@@ -1,5 +1,5 @@
-{% extends "template.html" %} {% block title %} SneakySave - About {% endblock
-%} {% block card %}
+{% extends "template.html" %} {% block title %} SneakySave -
+{{share_info.username}}'s Save {% endblock %} {% block card %}
 <!-- meta tags -->
 <meta name="title" content="SneakySave - {{share_info.username}}'s Save" />
 <meta
@@ -41,7 +41,7 @@
     </div>
     <div class="panel-right">
       <!-- Will contain save selection menu -->
-      <a href="0" class="save-link">
+      <a href="/{{share_info.id}}/0" class="save-link">
         <div class="save" id="save-1">
           <h3>Save 1</h3>
           <p>Last Updated: {{share_info.save0.last_updated}}</p>
@@ -51,7 +51,7 @@
           </div>
         </div>
       </a>
-      <a href="1" class="save-link">
+      <a href="/{{share_info.id}}/1" class="save-link">
         <div class="save" id="save-2">
           <h3>Save 2</h3>
           <p>Last Updated: {{share_info.save1.last_updated}}</p>
@@ -61,7 +61,7 @@
           </div>
         </div>
       </a>
-      <a href="2" class="save-link">
+      <a href="/{{share_info.id}}/2" class="save-link">
         <div class="save" id="save-3">
           <h3>Save 3</h3>
           <p>Last Updated: {{share_info.save2.last_updated}}</p>
