@@ -548,3 +548,65 @@ iframe {
   border-radius: 0.5rem;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
 }
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background-color: #e0e0e0;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: transform 0.2s;
+}
+
+.tag:hover {
+  transform: scale(1.05);
+}
+
+.tag:active {
+  transform: scale(0.95);
+}
+
+.tag img {
+  width: 1.5rem;
+  margin-right: 0.5rem;
+  position: relative;
+  top: 3px;
+}
+
+.tag span {
+  position: relative;
+  top: -2px;
+}
+
+.save-select-nav {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem;
+  background-color: #d7e6d0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.save-select-nav .nav-left {
+  flex-grow: 1;
+}
+
+.save-select-nav .nav-right {
+  flex-grow: 1;
+  text-align: right;
+}
+
+.save-select-nav a {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-right: 1rem;
+  transition: transform 0.2s;
+}

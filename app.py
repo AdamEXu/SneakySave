@@ -224,9 +224,9 @@ def save_select_menu(user_id):
   if user_id == None:
     return redirect('/save/' + call_user_id)
   share_info = users.get(user_id)
-  share_info['id'] = user_id
   if share_info is None:
     return redirect('/404')
+  share_info['id'] = user_id
   with open('saves/' + user_id + '/essentials/save0.json', 'r') as f:
     share_info['save0'] = json.load(f)
     share_info['save0']['last_updated'] = datetime.datetime.fromtimestamp(int(share_info['save0']['last_updated'])).strftime('%m/%d/%Y %I:%M:%S %p')
@@ -238,6 +238,28 @@ def save_select_menu(user_id):
     share_info['save0']['last_updated'] = datetime.datetime.fromtimestamp(int(share_info['save2']['last_updated'])).strftime('%m/%d/%Y %I:%M:%S %p')
   user_info = users.get(call_user_id)
   return render_template('selectsave.html', share_info=share_info, user_info=user_info)
+
+@app.route('/save/<string:user_id>/<string:index>')
+def save_page(user_id, index):
+  if not index.isdigit():
+    return redirect('/404')
+  index = int(index)
+  if index > 2 or index < 0:
+    return redirect('/404')
+  token = request.cookies.get('token')
+  call_user_id = get_userid_from_token(token)
+  with open('users.json', 'r') as f:
+    users = json.load(f)
+  share_info = users.get(user_id)
+  if share_info is None:
+    return redirect('/404')
+  share_info['id'] = user_id
+  with open('saves/' + user_id + '/essentials/save' + str(index) + '.json', 'r') as f:
+    share_info['save'] = json.load(f)
+    share_info['save']['last_updated'] = datetime.datetime.fromtimestamp(int(share_info['save']['last_updated'])).strftime('%m/%d/%Y %I:%M:%S %p')
+  user_info = users.get(call_user_id)
+  current_save = share_info['save']
+  return render_template('save.html', share_info=share_info, user_info=user_info, current_save=current_save)
 
 @app.route('/help/<string:page>')
 def help_page(page):

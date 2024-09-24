@@ -26,3 +26,29 @@
 .dropdown-item a:hover {
   color: #000;
 }
+
+.dropdown-item:active {
+  background-color: #e5e5e5;
+}
+
+.dropdown-item a:active {
+  color: #000;
+}
+
+@media only screen and (max-width: 600px) {
+  #navbar-left-desktop {
+    display: none;
+  }
+  #navbar-left-mobile {
+    display: flex;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  #navbar-left-desktop {
+    display: flex;
+  }
+  #navbar-left-mobile {
+    display: none;
+  }
+}

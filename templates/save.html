@@ -1,6 +1,36 @@
 {% extends "template.html" %} {% block title %} SneakySave -
 {{share_info.username}}'s Save {% endblock %} {% block content %}
+<div class="save-select-nav">
+  <div class="nav-left"><a href="/save/{{share_info.id}}">Back to Save Selection</a></div>
+  <div class="nav-right"></div>
+    <a href="/save/{{share_info.id}}/0">Save 1</a>
+    <a href="/save/{{share_info.id}}/1">Save 2</a>
+    <a href="/save/{{share_info.id}}/2">Save 3</a>
+  </div>
+</div>
 <div class="content-div">
-  <h1>Coming Soon!</h1>
+  <h1>{{share_info.username}}'s Save</h1>
+  <div class="panels">
+    <div class="panel-left">
+      <img
+        src="{{share_info.avatar}}"
+        alt="Profile Picture"
+        class="profile-picture"
+      />
+      <h2 style="text-align: center">{{share_info.username}}</h2>
+      <p>{{share_info.about}}</p>
+      <div class="tags" id="tag-area"></div>
+      <!-- will be populated with javascript -->
+    </div>
+    <div class="panel-right">
+      <!-- Actually go into the save file, {{current_save}} is the save file essentials -->
+      <h3>Save {{current_save.save_index}}</h3>
+      <p>Last Updated: {{current_save.last_updated}}</p>
+      <div class="save-stats">
+        <span class="save-stat">Coins: {{current_save.coins}}</span>
+        <span class="save-stat">Days: {{current_save.days}}</span>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}

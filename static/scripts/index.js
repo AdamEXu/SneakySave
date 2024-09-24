@@ -50,6 +50,15 @@ function toggleShareMenu() {
   );
 }
 
+function toggleMenu() {
+  dropdown(
+    '[{"name": "Home", "action": "/"}, {"name": "Explore", "action": "/explore"}, {"name": "About", "action": "/about"}]',
+    35,
+    70,
+    false
+  );
+}
+
 // function closeProfileMenu(event) {
 //   if (!event.target.matches(".profile-menu-button")) {
 //     document.getElementById("profile-menu").classList.add("hidden");
