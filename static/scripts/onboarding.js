@@ -57,10 +57,10 @@ document.getElementById("save-file").addEventListener("change", function () {
           document.getElementById("submit-btn").style.opacity = "1";
           fileError.innerText = ""; // Clear any previous error
         } else {
-          fileError.innerText = "Invalid save file";
+          fileError.innerText = "End of file is not matching";
         }
       } else {
-        fileError.innerText = "Invalid save file";
+        fileError.innerText = "Beginning of file is not matching";
       }
     };
 
