@@ -39,7 +39,10 @@ document.getElementById("save-file").addEventListener("change", function () {
     reader.onload = function (e) {
       const file_content = e.target.result;
       console.log("file is txt");
-      if (file_content.startsWith("**********CLOUDPROFILE0\n")) {
+      if (
+        file_content.startsWith("**********CLOUDPROFILE0\n") ||
+        file_content.startsWith("**********PROFILE0\n")
+      ) {
         console.log("start is matching");
         if (
           file_content.endsWith(
