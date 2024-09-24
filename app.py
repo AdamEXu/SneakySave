@@ -219,8 +219,6 @@ def save():
 def save_select_menu(user_id):
   token = request.cookies.get('token')
   call_user_id = get_userid_from_token(token)
-  if call_user_id is None:
-    return redirect('/help/nice-try')
   with open('users.json', 'r') as f:
     users = json.load(f)
   if user_id == None:
