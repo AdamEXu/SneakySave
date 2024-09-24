@@ -484,3 +484,67 @@ iframe {
   font-weight: 500;
   margin-top: 1.5rem;
 }
+
+.profile-picture {
+  width: 50%;
+  border-radius: 50%;
+}
+
+.save {
+  background-color: #d7e6d0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  height: auto;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.save:hover {
+  background-color: #d3edc7;
+  transform: scale(1.02);
+}
+
+.save-stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.save-stat {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.save-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.save-link:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.panels {
+  display: flex;
+  justify-content: space-between;
+  height: 70%;
+}
+
+.panel-left {
+  width: 30%;
+  height: 100%;
+  background-color: #d7e6d0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.panel-right {
+  width: 65%;
+  height: 100%;
+  background-color: #d7e6d0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}

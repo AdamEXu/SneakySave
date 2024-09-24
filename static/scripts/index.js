@@ -5,7 +5,7 @@ window.addEventListener("beforeunload", function (e) {
 function toggleProfileMenu() {
   dropdown(
     // '[{"name": "Profile", "action": "/profile"}, {"name": "Item 1", "action": "/item1"}, {"name": "Item 2", "action": "/item_2/more"}, {"name": "Item 3", "action": "item_three_func()"}]',
-    '[{"name": "Profile", "action": "/profile"}, {"name": "Logout", "action": "/logout"}]',
+    '[{"name": "Profile", "action": "/profile"}, {"name": "Help Center", "action": "/help"}, {"name": "Copy Save Link", "action": "copy_link()"}, {"name": "Logout", "action": "/logout"}]',
     30,
     70,
     true
@@ -29,7 +29,9 @@ function copy_link() {
       if (data.success) {
         var short_url = "https://ssave.co/" + data.username;
         navigator.clipboard.writeText(short_url);
-        alert("Link copied: " + short_url);
+        alert(
+          "The link was successfully copied to your clipboard: " + short_url
+        );
       } else {
         alert("Error copying link");
       }

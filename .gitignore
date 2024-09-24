@@ -8,6 +8,7 @@ output*
 *.log
 users.json
 tokens.json
+static/user_data/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

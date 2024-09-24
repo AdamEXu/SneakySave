@@ -1,5 +1,6 @@
 import os 
 import json
+from image_utils import generate_coverslide
 
 uid = "773996537414942763"
 
@@ -107,12 +108,16 @@ def update_save_index(uid, save):
       "coins": get_save_data(uid, f"save{str(i)}/sasquatch.stuff", "coins"),
       "bankcoin": get_save_data(uid, f"save{str(i)}/sasquatch.stuff", "bankcoin"),
       "lumber": get_save_data(uid, f"save{str(i)}/sasquatch.stuff", "lumber"),
+      "days": get_save_data(uid, f"save{str(i)}/sasquatch.stuff", "day"),
+      "last_updated": get_save_data(uid, f"save{str(i)}/user.stuff", "st"),
       "vehicles": vehicles,
       "map_pieces": map_pieces,
     }
 
     with open(f"saves/{uid}/essentials/save{str(i)}.json", "w") as f:
       f.write(json.dumps(essentials, indent=2))
+
+  generate_coverslide(uid)
 
   return path
 

@@ -1,0 +1,76 @@
+{% extends "template.html" %} {% block title %} SneakySave - About {% endblock
+%} {% block card %}
+<!-- meta tags -->
+<meta name="title" content="SneakySave - {{share_info.username}}'s Save" />
+<meta
+  name="description"
+  content="Check out {{share_info.username}}'s Sneaky Sasquatch save and much more on SneakySave."
+/>
+<meta property="og:type" content="website" />
+<meta
+  property="og:url"
+  content="https://sneakysave.com/save/{{share_info.id}}"
+/>
+<meta
+  property="og:title"
+  content="SneakySave - {{share_info.username}}'s Save"
+/>
+<meta
+  property="og:description"
+  content="Check out {{share_info.username}}'s Sneaky Sasquatch save and much more on SneakySave."
+/>
+<meta
+  property="og:image"
+  content="https://sneakysave.com/static/user_data/{{share_info.id}}/generated_coverslide.png"
+/>
+{% endblock %} {% block content %}
+<div class="content-div">
+  <h1>{{share_info.username}}'s Save</h1>
+  <div class="panels">
+    <div class="panel-left">
+      <img
+        src="{{share_info.avatar}}"
+        alt="Profile Picture"
+        class="profile-picture"
+      />
+      <h2 style="text-align: center">{{share_info.username}}</h2>
+      <p>{{share_info.about}}</p>
+      <div class="tags" id="tag-area"></div>
+      <!-- will be populated with javascript -->
+    </div>
+    <div class="panel-right">
+      <!-- Will contain save selection menu -->
+      <a href="0" class="save-link">
+        <div class="save" id="save-1">
+          <h3>Save 1</h3>
+          <p>Last Updated: {{share_info.save0.last_updated}}</p>
+          <div class="save-stats">
+            <span class="save-stat">Coins: {{share_info.save0.coins}}</span>
+            <span class="save-stat">Days: {{share_info.save0.days}}</span>
+          </div>
+        </div>
+      </a>
+      <a href="1" class="save-link">
+        <div class="save" id="save-2">
+          <h3>Save 2</h3>
+          <p>Last Updated: {{share_info.save1.last_updated}}</p>
+          <div class="save-stats">
+            <span class="save-stat">Coins: {{share_info.save1.coins}}</span>
+            <span class="save-stat">Days: {{share_info.save1.days}}</span>
+          </div>
+        </div>
+      </a>
+      <a href="2" class="save-link">
+        <div class="save" id="save-3">
+          <h3>Save 3</h3>
+          <p>Last Updated: {{share_info.save2.last_updated}}</p>
+          <div class="save-stats">
+            <span class="save-stat">Coins: {{share_info.save2.coins}}</span>
+            <span class="save-stat">Days: {{share_info.save2.days}}</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

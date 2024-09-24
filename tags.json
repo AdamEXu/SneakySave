@@ -1,0 +1,9 @@
+{
+  "test_tag": {
+    "name": "Test Tag",
+    "description": "This is a test tag.",
+    "color": "#ff0000",
+    "icon": "/static/resources/favicons/ssave.png",
+    "link": "/"
+  }
+}
