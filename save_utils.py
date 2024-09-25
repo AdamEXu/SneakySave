@@ -4,14 +4,6 @@ from image_utils import generate_coverslide
 
 uid = "773996537414942763"
 
-def check_save_file_valid(save):
-  save = save.split('\n')
-  # make sure that ***********CLOUDPROFILE0, ***********CLOUDPROFILE1, etc exist
-  for i in range(3):
-    if f"**********CLOUDPROFILE{str(i+1)}" not in save:
-      return False
-  return True
-
 def create_save_index(uid):
   path = f"saves/{uid}/"
   os.makedirs(path, exist_ok=True)
@@ -29,8 +21,6 @@ def get_save_data(uid, path, index):
     return data
 
 def update_save_index(uid, save):
-  if not check_save_file_valid(save):
-    return False
 
   path = create_save_index(uid)
   # save is a string containing the save data.
