@@ -53,7 +53,7 @@ body {
   list-style-position: inside;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 10rem);
+  min-height: calc(100vh - 9rem);
   margin: 2rem;
 }
 
@@ -184,8 +184,8 @@ a.link:active {
 }
 
 .homepage-icon {
-  width: 20rem;
   height: 20rem;
+  width: auto;
   animation: hover 3s infinite;
   margin-top: -8rem;
 }
@@ -240,6 +240,7 @@ a.link:active {
   text-align: center;
   list-style-position: inside;
   margin: 2rem;
+  min-height: calc(100vh - 9rem);
 }
 
 iframe {
@@ -528,7 +529,6 @@ iframe {
 .panels {
   display: flex;
   justify-content: space-between;
-  height: 70%;
 }
 
 .panel-left {
@@ -588,15 +588,18 @@ iframe {
 .save-select-nav {
   display: flex;
   flex-direction: row;
-  margin: 1rem;
+  margin-bottom: 1rem;
   background-color: #d7e6d0;
   padding: 1rem;
   border-radius: 0.5rem;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  opacity: 1;
+  transition: none;
 }
 
 .save-select-nav .nav-left {
   flex-grow: 1;
+  text-align: left;
 }
 
 .save-select-nav .nav-right {

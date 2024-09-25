@@ -25,8 +25,19 @@
 />
 <meta property="twitter:card" content="summary_large_image" />
 {% endblock %} {% block content %}
+</div>
 <div class="content-div">
   <h1>{{share_info.username}}'s Save</h1>
+  <div class="save-select-nav">
+    <div class="nav-left">
+      <!-- <a href="/save/{{share_info.id}}">Select Save</a> -->
+    </div>
+    <div class="nav-right">
+      <a href="/save/{{share_info.id}}/0">Save 1</a>
+      <a href="/save/{{share_info.id}}/1">Save 2</a>
+      <a href="/save/{{share_info.id}}/2">Save 3</a>
+    </div>
+  </div>
   <div class="panels">
     <div class="panel-left">
       <img

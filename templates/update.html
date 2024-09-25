@@ -1,0 +1,56 @@
+{% extends "template.html" %} {% block title %} SneakySave - Update Save {%
+endblock %} {% block content %}
+<div class="content-div">
+  <h1>Update your save</h1>
+  <div class="panels">
+    <div class="panel-left">
+      <img
+        src="{{user_info.avatar}}"
+        alt="Profile Picture"
+        class="profile-picture"
+      />
+      <h2 style="text-align: center">{{user_info.username}}</h2>
+      <p>{{user_info.about}}</p>
+      <div class="tags" id="tag-area"></div>
+    </div>
+    <div class="panel-right">
+      <p>
+        To update your save, you will need to upload your save file. Please note
+        that this will replace your current save file.
+      </p>
+      <p>
+        We recommend updating your save file every week so that others can see
+        your up to date progress.
+      </p>
+      <p>
+        Additionally, we may introduce new features that will require a
+        reprocessing, which will only be available to saves that have been
+        updated.
+      </p>
+      <p>Thank you for using SneakySave!</p>
+      <form onsubmit="return false;">
+        <label for="save-file">
+          <a class="button">Update Save</a><br />
+          <span id="save-file-name">No file chosen</span> </label
+        ><br />
+        <input
+          type="file"
+          id="save-file"
+          class="save-upload"
+          name="save-file"
+        /><br />
+        <span id="save-file-error" class="error-message"></span>
+        <script src="/static/scripts/update.js"></script>
+      </form>
+      <p>
+        If you are having issues, please contact us on our Discord server, which
+        is linked in the footer.
+      </p>
+      <p>
+        Your save is collected according to our
+        <a href="/help/privacy">Privacy Policy</a>.
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,15 +1,18 @@
 {% extends "template.html" %} {% block title %} SneakySave -
 {{share_info.username}}'s Save {% endblock %} {% block content %}
-<div class="save-select-nav">
-  <div class="nav-left"><a href="/save/{{share_info.id}}">Back to Save Selection</a></div>
-  <div class="nav-right"></div>
-    <a href="/save/{{share_info.id}}/0">Save 1</a>
-    <a href="/save/{{share_info.id}}/1">Save 2</a>
-    <a href="/save/{{share_info.id}}/2">Save 3</a>
-  </div>
 </div>
 <div class="content-div">
   <h1>{{share_info.username}}'s Save</h1>
+  <div class="save-select-nav">
+    <div class="nav-left">
+      <a href="/save/{{share_info.id}}">Back</a>
+    </div>
+    <div class="nav-right">
+      <a href="/save/{{share_info.id}}/0">Save 1</a>
+      <a href="/save/{{share_info.id}}/1">Save 2</a>
+      <a href="/save/{{share_info.id}}/2">Save 3</a>
+    </div>
+  </div>
   <div class="panels">
     <div class="panel-left">
       <img
@@ -24,12 +27,18 @@
     </div>
     <div class="panel-right">
       <!-- Actually go into the save file, {{current_save}} is the save file essentials -->
-      <h3>Save {{current_save.save_index}}</h3>
+      <h1>Save {{current_save.save_index}}</h1>
       <p>Last Updated: {{current_save.last_updated}}</p>
-      <div class="save-stats">
+      <div class="save save-stats">
         <span class="save-stat">Coins: {{current_save.coins}}</span>
         <span class="save-stat">Days: {{current_save.days}}</span>
       </div>
+      <div class="save save-stats">
+        <span class="save-stat">Map Pieces: {{current_save.map_pieces}}</span>
+      </div>
+      <div class="save save-stats">
+        <span class="save-stat">Caches Found: {{current_save.caches_found}} / 39 </span>
+      </div>"
     </div>
   </div>
 </div>

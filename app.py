@@ -215,6 +215,17 @@ def save():
     return redirect('/help/nice-try')
   return redirect(f'/save/{user_id}')
 
+@app.route('/update')
+def update():
+  token = request.cookies.get('token')
+  user_id = get_userid_from_token(token)
+  if user_id is None:
+    return redirect('/help/nice-try')
+  with open('users.json', 'r') as f:
+    users = json.load(f)
+  user_info = users.get(user_id)
+  return render_template('update.html', user_info=user_info)
+
 @app.route('/save/<string:user_id>')
 def save_select_menu(user_id):
   token = request.cookies.get('token')
@@ -259,6 +270,7 @@ def save_page(user_id, index):
     share_info['save']['last_updated'] = datetime.datetime.fromtimestamp(int(share_info['save']['last_updated'])).strftime('%m/%d/%Y %I:%M:%S %p')
   user_info = users.get(call_user_id)
   current_save = share_info['save']
+  current_save['save_index'] = index+1
   return render_template('save.html', share_info=share_info, user_info=user_info, current_save=current_save)
 
 @app.route('/help/<string:page>')
@@ -407,6 +419,25 @@ def get_tags():
   with open('tags.json', 'r') as f:
     tags = json.load(f)
     return {'success': True, 'tags': tags}
+
+@app.route('/api/update', methods=['POST'])
+def update_save():
+  token = request.form.get('token')
+  save_file = request.files.get('save-file')
+  user_id = get_userid_from_token(token)
+  if user_id is None:
+    return {'error': 'Invalid token'}, 401
+  if save_file:
+    save = save_file.read().decode('utf-8')
+    try:
+      update_save_index(user_id, save)
+      print(f'Save file for user {user_id} updated.')
+    except:
+      print(f'Error updating save file for user {user_id}')
+      return {'error': 'Invalid save file'}, 500
+    return {'success': True}
+  else:
+    return {'error': 'No save file provided'}, 400
 
 # @app.route('/api/alias')
 # def alias():
