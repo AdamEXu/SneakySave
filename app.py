@@ -371,8 +371,7 @@ def check_save():
   if save_file:
     save = save_file.read().decode('utf-8')
     try:
-      if not update_save_index('temp', save):
-        return {'error': 'Invalid save file'}, 500
+      update_save_index('temp', save):
       return {'success': True}
     except:
       return {'error': 'Invalid save file'}, 500
