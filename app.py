@@ -356,6 +356,29 @@ def check_username():
       return {'success': False, 'error': 'Username already taken'}
   return {'success': True}
 
+@app.route('/api/check_save', methods=['POST'])
+def check_save():
+  token = request.form.get('token')
+  user_id = get_userid_from_token(token)
+  # save a copy of the save file to /tmp/debug/saves/uid.txt
+  if user_id is None:
+    return {'error': 'Invalid token'}, 401
+  if not os.path.exists('tmp/debug/saves'):
+    os.makedirs('tmp/debug/saves')
+  with open(f'tmp/debug/saves/{user_id}.txt', 'w') as f:
+    f.write(request.files.get('save-file').read().decode('utf-8'))
+  save_file = request.files.get('save-file')
+  if save_file:
+    save = save_file.read().decode('utf-8')
+    try:
+      if not update_save_index('temp', save):
+        return {'error': 'Invalid save file'}, 500
+      return {'success': True}
+    except:
+      return {'error': 'Invalid save file'}, 500
+  else:
+    return {'error': 'No save file provided'}, 400
+
 @app.route('/api/onboard', methods=['POST'])
 def onboard():
   token = request.form.get('token')

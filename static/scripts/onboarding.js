@@ -33,45 +33,22 @@ document.getElementById("save-file").addEventListener("change", function () {
   const file = this.files[0];
   const fileError = document.getElementById("save-file-error");
 
-  if (file && file.name.endsWith(".txt")) {
-    const reader = new FileReader();
-
-    reader.onload = function (e) {
-      const file_content = e.target.result;
-      console.log("file is txt");
-      if (
-        file_content.startsWith("**********CLOUDPROFILE0\n") ||
-        file_content.startsWith("**********PROFILE0\n")
-      ) {
-        console.log("start is matching");
-        if (
-          file_content.endsWith(
-            "--------default3/map/3f43248e5acd441dcb61e402a42e25e6.stuff 2b\n{}\n"
-          )
-        ) {
-          console.log("end is matching");
-          document.getElementById("save-file-name").innerText = file.name;
-          document.getElementById("step-2").classList.add("completed");
-          document.getElementById("step-3").classList.remove("upcoming");
-          document.getElementById("done-text-save").classList.remove("hidden");
-          document.getElementById("submit-btn").style.opacity = "1";
-          fileError.innerText = ""; // Clear any previous error
-        } else {
-          fileError.innerText = "End of file is not matching";
-        }
+  var url = "/api/check_save";
+  var formData = new FormData();
+  formData.append("save-file", document.getElementById("save-file").files[0]);
+  fetch(url, {
+    method: "POST",
+    body: formData,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        document.getElementById("step-2").classList.add("completed");
+        document.getElementById("step-3").classList.remove("upcoming");
       } else {
-        fileError.innerText = "Beginning of file is not matching";
+        fileError.innerText = data.error;
       }
-    };
-
-    reader.onerror = function () {
-      fileError.innerText = "Error reading file";
-    };
-
-    reader.readAsText(file);
-  } else {
-    fileError.innerText = "Invalid file type";
-  }
+    });
 });
 
 function submitForm() {

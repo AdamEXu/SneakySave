@@ -4,6 +4,14 @@ from image_utils import generate_coverslide
 
 uid = "773996537414942763"
 
+def check_save_file_valid(save):
+  save = save.split('\n')
+  # make sure that ***********CLOUDPROFILE0, ***********CLOUDPROFILE1, etc exist
+  for i in range(3):
+    if f"**********CLOUDPROFILE{str(i+1)}" not in save:
+      return False
+  return True
+
 def create_save_index(uid):
   path = f"saves/{uid}/"
   os.makedirs(path, exist_ok=True)
@@ -21,6 +29,9 @@ def get_save_data(uid, path, index):
     return data
 
 def update_save_index(uid, save):
+  if not check_save_file_valid(save):
+    return False
+
   path = create_save_index(uid)
   # save is a string containing the save data.
   # we want to keep only the cloud save data.
@@ -116,10 +127,13 @@ def update_save_index(uid, save):
 
     with open(f"saves/{uid}/essentials/save{str(i)}.json", "w") as f:
       f.write(json.dumps(essentials, indent=2))
+  if uid != "temp":
+    generate_coverslide(uid)
+  else:
+    # remove the temp save
+    os.rmdir(f"saves/{uid}")
 
-  generate_coverslide(uid)
-
-  return path
+  return True
 
 # with open("test.txt", "r") as f:
 #   save = f.read()
