@@ -5,6 +5,7 @@ document.getElementById("save-file").addEventListener("change", function () {
   var url = "/api/check_save";
   var formData = new FormData();
   formData.append("save-file", document.getElementById("save-file").files[0]);
+  formData.append("token", getCookie("token"));
   fetch(url, {
     method: "POST",
     body: formData,
