@@ -5,7 +5,7 @@ window.addEventListener("beforeunload", function (e) {
 function toggleProfileMenu() {
   dropdown(
     // '[{"name": "Profile", "action": "/profile"}, {"name": "Item 1", "action": "/item1"}, {"name": "Item 2", "action": "/item_2/more"}, {"name": "Item 3", "action": "item_three_func()"}]',
-    '[{"name": "Profile", "action": "/profile"}, {"name": "Help Center", "action": "/help"}, {"name": "Copy Save Link", "action": "copy_link()"}, {"name": "Logout", "action": "/logout"}]',
+    '[{"name": "View Your Save", "action": "/save"}, {"name": "Help Center", "action": "/help"}, {"name": "Copy Save Link", "action": "copy_link()"}, {"name": "Logout", "action": "/logout"}]',
     30,
     70,
     true
@@ -51,12 +51,23 @@ function toggleShareMenu() {
 }
 
 function toggleMenu() {
-  dropdown(
-    '[{"name": "Home", "action": "/"}, {"name": "Explore", "action": "/explore"}, {"name": "About", "action": "/about"}]',
-    35,
-    70,
-    false
-  );
+  if (getCookie("token") != "not_found") {
+    dropdown(
+      '[{"name": "Dashboard", "action": "/"}, {"name": "Explore", "action": "/explore"}, {"name": "About", "action": "/about"}, {"name": "Update Save", "action": "/update"}]',
+      35,
+      70,
+      false
+    );
+    return;
+  } else {
+    dropdown(
+      '[{"name": "Home", "action": "/"}, {"name": "Explore", "action": "/explore"}, {"name": "About", "action": "/about"}]',
+      35,
+      70,
+      false
+    );
+    return;
+  }
 }
 
 // function closeProfileMenu(event) {

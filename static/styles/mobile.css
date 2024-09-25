@@ -1,0 +1,49 @@
+@media only screen and (max-width: 600px) {
+  * {
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .homepage-icon {
+    width: 90vw;
+    height: auto;
+    animation: hover 3s infinite;
+    margin-top: -2rem;
+  }
+
+  .footer {
+    height: 10rem;
+  }
+
+  .panels {
+    flex-direction: column;
+  }
+
+  .panel-left {
+    width: calc(100% - 2rem);
+    margin-bottom: 1rem;
+    /* disable shadow */
+    box-shadow: none;
+  }
+
+  .panel-right {
+    width: calc(100% - 2rem);
+    /* disable shadow */
+    box-shadow: none;
+  }
+
+  .onboarding-form {
+    width: calc(100% - 2rem);
+    margin-bottom: 1rem;
+    /* disable shadow */
+    /* box-shadow: none; */
+  }
+
+  .step {
+    width: calc(100% - 2rem);
+    margin-bottom: 1rem;
+    /* disable shadow */
+    /* box-shadow: none; */
+  }
+}
