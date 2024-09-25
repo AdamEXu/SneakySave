@@ -373,7 +373,9 @@ def check_save():
     try:
       update_save_index('temp', save)
       return {'success': True}
-    except:
+    except Exception as e:
+      print(f'Error updating save file for user {user_id}')
+      print(e)
       return {'error': 'Invalid save file'}, 500
   else:
     return {'error': 'No save file provided'}, 400
