@@ -21,7 +21,6 @@ def get_save_data(uid, path, index):
     return data
 
 def update_save_index(uid, save):
-
   path = create_save_index(uid)
   # save is a string containing the save data.
   # we want to keep only the cloud save data.

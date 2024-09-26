@@ -365,20 +365,13 @@ def check_save():
     return {'error': 'Invalid token'}, 401
   if not os.path.exists('tmp/debug/saves'):
     os.makedirs('tmp/debug/saves')
-  with open(f'tmp/debug/saves/{user_id}.txt', 'w') as f:
-    f.write(request.files.get('save-file').read().decode('utf-8'))
-  save_file = request.files.get('save-file')
-  if save_file:
-    save = save_file.read().decode('utf-8')
-    try:
-      update_save_index('temp', save)
-      return {'success': True}
-    except Exception as e:
-      print(f'Error updating save file for user {user_id}')
-      print(e)
-      return {'error': 'Invalid save file'}, 500
-  else:
-    return {'error': 'No save file provided'}, 400
+  save_file = request.files.get('save-file').stream.read().decode('utf-8')
+  # try to update the save index
+  try:
+    update_save_index(user_id, save_file)
+    return {'success': True}
+  except:
+    return {'success': False, 'error': 'Invalid save file'}
 
 @app.route('/api/onboard', methods=['POST'])
 def onboard():

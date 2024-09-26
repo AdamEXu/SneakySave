@@ -29,13 +29,16 @@ function nextStep() {
     });
 }
 
+// Add this new code to update the file name display
 document.getElementById("save-file").addEventListener("change", function () {
+  const fileName = this.files[0] ? this.files[0].name : "No file chosen";
+  document.getElementById("save-file-name").textContent = fileName;
   const file = this.files[0];
   const fileError = document.getElementById("save-file-error");
 
   var url = "/api/check_save";
   var formData = new FormData();
-  formData.append("save-file", document.getElementById("save-file").files[0]);
+  formData.append("save-file", file);
   formData.append("token", getCookie("token"));
   fetch(url, {
     method: "POST",
@@ -46,6 +49,8 @@ document.getElementById("save-file").addEventListener("change", function () {
       if (data.success) {
         document.getElementById("step-2").classList.add("completed");
         document.getElementById("step-3").classList.remove("upcoming");
+        document.getElementById("submit-btn").style.opacity = "1";
+        fileError.innerText = "";
       } else {
         fileError.innerText = data.error;
       }
