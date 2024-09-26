@@ -243,10 +243,10 @@ def save_select_menu(user_id):
     share_info['save0']['last_updated'] = datetime.datetime.fromtimestamp(int(share_info['save0']['last_updated'])).strftime('%m/%d/%Y %I:%M:%S %p')
   with open('saves/' + user_id + '/essentials/save1.json', 'r') as f:
     share_info['save1'] = json.load(f)
-    share_info['save0']['last_updated'] = datetime.datetime.fromtimestamp(int(share_info['save1']['last_updated'])).strftime('%m/%d/%Y %I:%M:%S %p')
+    share_info['save1']['last_updated'] = datetime.datetime.fromtimestamp(int(share_info['save1']['last_updated'])).strftime('%m/%d/%Y %I:%M:%S %p')
   with open('saves/' + user_id + '/essentials/save2.json', 'r') as f:
     share_info['save2'] = json.load(f)
-    share_info['save0']['last_updated'] = datetime.datetime.fromtimestamp(int(share_info['save2']['last_updated'])).strftime('%m/%d/%Y %I:%M:%S %p')
+    share_info['save2']['last_updated'] = datetime.datetime.fromtimestamp(int(share_info['save2']['last_updated'])).strftime('%m/%d/%Y %I:%M:%S %p')
   user_info = users.get(call_user_id)
   return render_template('selectsave.html', share_info=share_info, user_info=user_info)
 
