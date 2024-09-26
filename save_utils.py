@@ -17,6 +17,8 @@ def get_save_data(uid, path, index):
   with open(path, "r") as f:
     data = json.loads(f.read())
     for i in index.split("."):
+      if i not in data:
+        return None
       data = data[i]
     return data
 
@@ -106,8 +108,8 @@ def update_save_index(uid, save):
 
     essentials = {
       "coins": get_save_data(uid, f"save{str(i)}/sasquatch.stuff", "coins"),
-      "bankcoin": get_save_data(uid, f"save{str(i)}/sasquatch.stuff", "bankcoin"),
-      "lumber": get_save_data(uid, f"save{str(i)}/sasquatch.stuff", "lumber"),
+      "bankcoin": 0 if get_save_data(uid, f"save{str(i)}/sasquatch.stuff", "bankcoin") is None else get_save_data(uid, f"save{str(i)}/sasquatch.stuff", "bankcoin"),
+      "lumber": 0 if get_save_data(uid, f"save{str(i)}/sasquatch.stuff", "lumber") is None else get_save_data(uid, f"save{str(i)}/sasquatch.stuff", "lumber"),
       "days": get_save_data(uid, f"save{str(i)}/sasquatch.stuff", "day"),
       "last_updated": get_save_data(uid, f"save{str(i)}/user.stuff", "st"),
       "vehicles": vehicles,

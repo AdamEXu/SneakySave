@@ -370,7 +370,8 @@ def check_save():
   try:
     update_save_index(user_id, save_file)
     return {'success': True}
-  except:
+  except Exception as e:
+    print(e)
     return {'success': False, 'error': 'Invalid save file'}
 
 @app.route('/api/onboard', methods=['POST'])
