@@ -127,7 +127,7 @@ def update_save_index(uid, save):
       "vehicles": vehicles,
       "map_pieces": map_pieces,
     }
-    print(essentials)
+    # print(essentials)
 
     with open(f"saves/{uid}/essentials/save{str(i)}.json", "w") as f:
       f.write(json.dumps(essentials, indent=2))

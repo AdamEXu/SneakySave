@@ -28,17 +28,19 @@
     <div class="panel-right">
       <!-- Actually go into the save file, {{current_save}} is the save file essentials -->
       <h1>Save {{current_save.save_index}}</h1>
-      <p>Last Updated: {{current_save.last_updated}}</p>
-      <div class="save save-stats">
+      <p>Last Played: {{current_save.last_updated}}</p>
+      <div class="save save-stats nohover">
         <span class="save-stat">Coins: {{current_save.coins}}</span>
         <span class="save-stat">Days: {{current_save.days}}</span>
       </div>
-      <div class="save save-stats">
+      <div class="save save-stats nohover">
         <span class="save-stat">Map Pieces: {{current_save.map_pieces}}</span>
       </div>
-      <div class="save save-stats">
-        <span class="save-stat">Caches Found: {{current_save.caches_found}} / 39 </span>
-      </div>"
+      <a class="match detail" onclick="openPanel('caches')">
+        <div class="save save-stats">
+          <span class="save-stat">Caches Found: {{current_save.caches_found}} / 39 </span>
+        </div>
+      </a>
     </div>
   </div>
 </div>
