@@ -106,15 +106,28 @@ def update_save_index(uid, save):
       if "mapseg_" in item["type"]:
         map_pieces += 1
 
+    coins = get_save_data(uid, f"save{str(i)}/sasquatch.stuff", "coins")
+    if coins is None:
+      coins = 0
+
+    bankcoin = get_save_data(uid, f"save{str(i)}/sasquatch.stuff", "bankcoin")
+    if bankcoin is None:
+      bankcoin = 0
+
+    lumber = get_save_data(uid, f"save{str(i)}/sasquatch.stuff", "lumber")
+    if lumber is None:
+      lumber = 0
+
     essentials = {
-      "coins": get_save_data(uid, f"save{str(i)}/sasquatch.stuff", "coins"),
-      "bankcoin": 0 if get_save_data(uid, f"save{str(i)}/sasquatch.stuff", "bankcoin") is None else get_save_data(uid, f"save{str(i)}/sasquatch.stuff", "bankcoin"),
-      "lumber": 0 if get_save_data(uid, f"save{str(i)}/sasquatch.stuff", "lumber") is None else get_save_data(uid, f"save{str(i)}/sasquatch.stuff", "lumber"),
+      "coins": coins,
+      "bankcoin": bankcoin,
+      "lumber": lumber,
       "days": get_save_data(uid, f"save{str(i)}/sasquatch.stuff", "day"),
       "last_updated": get_save_data(uid, f"save{str(i)}/user.stuff", "st"),
       "vehicles": vehicles,
       "map_pieces": map_pieces,
     }
+    print(essentials)
 
     with open(f"saves/{uid}/essentials/save{str(i)}.json", "w") as f:
       f.write(json.dumps(essentials, indent=2))
