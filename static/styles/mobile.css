@@ -46,4 +46,10 @@
     /* disable shadow */
     /* box-shadow: none; */
   }
+
+  .footer-left a {
+    /* fix text not wrapping */
+    white-space: nowrap;
+    margin-right: 0;
+  }
 }

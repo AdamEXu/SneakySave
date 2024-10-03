@@ -105,8 +105,8 @@ def callback():
   username = user_info['username']
   avatar = user_info['avatar']
 
-  if user_id not in betauser_ids:
-    return redirect('/help/nice-try')
+  # if user_id not in betauser_ids:
+  #   return redirect('/help/nice-try')
 
   print(f'User {username} ({user_id}) logged in.')
   print(f'Avatar: {avatar}')
